@@ -131,15 +131,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isSupabaseConnected, setIsSupabaseConnected] = useState(false);
   const [themeMode, setThemeMode] = useState<'dark' | 'light'>('dark');
 
-  // Default logged in user (Vy)
-  const [user, setUser] = useState<UserSession | null>({
-    id: 'student-vy',
-    name: 'Trần Thị Vy',
-    email: 'thivy.struggling@auralms.edu.vn',
-    role: 'student',
-    avatar: 'TV',
-    studentId: 'student-vy',
-  });
+  // Initial logged in user is NULL by default for new visitors
+  const [user, setUser] = useState<UserSession | null>(null);
 
   const supabase = createClient();
 
@@ -154,7 +147,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           setRole(parsed.role);
           if (parsed.studentId) setActiveStudentId(parsed.studentId);
         } catch {
-          // Keep default state
+          // Keep default null state
         }
       }
 
