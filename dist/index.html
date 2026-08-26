@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AuraLMS - Nền tảng học tập cá nhân hóa thông minh dành cho học sinh giỏi, khá và trung bình yếu. Tích hợp lộ trình động và trợ lý học tập AI.">
+  <title>AuraLMS - Cá nhân hóa Học tập Lập trình</title>
+  
+  <!-- CDN Scripts for Charts and Confetti Effects -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script type="module" crossorigin src="/assets/index-Cnvuo7a_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-8h2_Gsid.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg style="width:22px; height:22px; stroke:white; fill:none;" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <span class="logo-text">AuraLMS</span>
+      </div>
+
+      <!-- Navigation links (rendered or shown dynamically based on role) -->
+      <nav style="flex: 1;">
+        <!-- Student Menu -->
+        <ul class="nav-links" id="menu-student">
+          <li>
+            <div class="nav-item active" id="nav-stud-dashboard" data-tab="dashboard">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+              </svg>
+              <span>Tổng quan học tập</span>
+            </div>
+          </li>
+          <li>
+            <div class="nav-item" id="nav-stud-roadmap" data-tab="roadmap">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              <span>Lộ trình cá nhân hóa</span>
+            </div>
+          </li>
+          <li>
+            <div class="nav-item" id="nav-stud-assignments" data-tab="assignments">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              <span>Bài tập tự luận</span>
+            </div>
+          </li>
+          <li>
+            <div class="nav-item" id="nav-stud-analytics" data-tab="analytics">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <span>Báo cáo kỹ năng</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Teacher Menu -->
+        <ul class="nav-links" id="menu-teacher" style="display: none;">
+          <li>
+            <div class="nav-item active" id="nav-teach-overview" data-tab="overview">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <span>Quản lý Lớp học</span>
+            </div>
+          </li>
+          <li>
+            <div class="nav-item" id="nav-teach-grading" data-tab="grading">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+              <span>Hỗ trợ chấm bài</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- User switcher display in sidebar bottom -->
+      <div class="user-info-panel" id="sidebar-user-panel">
+        <div class="user-avatar" id="sidebar-avatar">MA</div>
+        <div class="user-details">
+          <span class="user-name" id="sidebar-username">Nguyễn Minh Anh</span>
+          <span class="user-role-badge" id="sidebar-rolebadge" style="background:var(--tier-excellent-bg); color:var(--tier-excellent)">Học viên</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper">
+      <!-- Top header bar controls -->
+      <header class="topbar">
+        <div style="display: flex; align-items: center;">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Toggle Navigation menu">
+            <svg style="width:24px; height:24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <h2 class="page-title" id="page-title">Tổng quan học tập</h2>
+        </div>
+        
+        <div class="controls-container">
+          <!-- Role selector buttons -->
+          <div class="role-toggle">
+            <button class="btn-toggle active" id="role-student">HỌC VIÊN</button>
+            <button class="btn-toggle" id="role-teacher">GIÁO VIÊN</button>
+          </div>
+
+          <!-- Student profile picker (Visible only on Student Role) -->
+          <select class="student-picker" id="student-picker">
+            <option value="student-vy">Vy (Nhóm cần hỗ trợ)</option>
+            <option value="student-nam">Nam (Nhóm trung bình)</option>
+            <option value="student-anh" selected>Anh (Nhóm xuất sắc)</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- Scrollable content panels -->
+      <section class="content-body" id="content-body">
+        <!-- Student Panels -->
+        <div class="page-panel active" id="panel-dashboard" data-panel="dashboard">
+          <!-- Student Dashboard rendered here -->
+        </div>
+
+        <div class="page-panel" id="panel-roadmap" data-panel="roadmap">
+          <!-- Student SVG Roadmap rendered here -->
+        </div>
+
+        <div class="page-panel" id="panel-assignments" data-panel="assignments">
+          <!-- Homework area rendered here -->
+        </div>
+
+        <div class="page-panel" id="panel-analytics" data-panel="analytics">
+          <!-- Chart.js skill reports rendered here -->
+          <div style="display:grid; grid-template-columns: 1.2fr 2fr; gap:24px;">
+            <div class="glass-card">
+              <h3 style="font-size:16px; border-bottom:1px solid var(--border-light); padding-bottom:8px;">Bản đồ năng lực kỹ năng</h3>
+              <p class="dashboard-title-sub">Radar thể hiện độ lệch năng lực so với kỳ vọng</p>
+              <div class="chart-container" style="height:300px;">
+                <canvas id="chart-skills-radar"></canvas>
+              </div>
+            </div>
+            <div class="glass-card">
+              <h3 style="font-size:16px; border-bottom:1px solid var(--border-light); padding-bottom:8px;">Điểm số & Thời gian hoạt động</h3>
+              <p class="dashboard-title-sub">Tích lũy thời gian học lập trình và điểm số bài luận hàng ngày</p>
+              <div class="chart-container" style="height:300px;">
+                <canvas id="chart-performance-trend"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher Panels -->
+        <div class="page-panel" id="panel-overview" data-panel="overview">
+          <!-- Teacher Dashboard Class overview rendered here -->
+        </div>
+
+        <div class="page-panel" id="panel-grading" data-panel="grading">
+          <!-- Rubric grading area rendered here -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <!-- Lecture Viewer Modal -->
+  <div id="lecture-modal" class="lecture-modal" style="display: none;">
+    <div class="lecture-modal-content glass-card">
+      <div class="lecture-modal-header">
+        <h2 id="lecture-modal-title" style="font-size:20px;">Tiêu đề bài giảng</h2>
+        <button class="btn-close-chat" id="btn-close-lecture" style="background:transparent; border:none; color:white; cursor:pointer;">
+          <svg style="width:20px; height:20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="lecture-modal-body" id="lecture-modal-body">
+        <!-- Lecture Content will be injected here -->
+      </div>
+      <div class="lecture-modal-footer">
+        <button class="action-btn" id="btn-complete-lecture" style="width: 100%; justify-content: center;">
+          <span>Hoàn thành lý thuyết & Luyện tập bài tập tự luận</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
